@@ -9,4 +9,4 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         name = kwargs['name']
         greeting = f'Hi {name}, Good Morning'
-        self.stdout.write(self.style.SUCCESS(greeting))
+        self.stderr.write(self.style.SUCCESS(greeting))
