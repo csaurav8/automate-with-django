@@ -9,13 +9,17 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("file_path", type=str, help="sets the path of csv")
-        parser.add_argument("model_name", type=str, help="sets the path of csv")
+        parser.add_argument("model_name", type=str, help="name of the model")
 
 
     def handle(self, *args, **kwargs):
         file_path = kwargs["file_path"]
         model_name = kwargs["model_name"]
 
+        model = None
+
+        # search for model in all installed apps
+        
         for app_config in apps.get_app_configs():
             try:
                 model = apps.get_model(app_config.label, model_name)
